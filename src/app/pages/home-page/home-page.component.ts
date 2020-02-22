@@ -10,18 +10,19 @@ import { CatsRepository } from 'src/RepositoriesInjector/Repositories/CatsReposi
 export class HomePageComponent implements OnInit {
   title = 'ang-clean-arc';
   catsRepository: CatsRepository;
- 
+  cats = [];
 
   constructor(
     private repositoriesInjector: RepositoriesInjector
   ) {
     const repositories = this.repositoriesInjector.getRepositories();
-    this.catsRepository = repositories.catsRepository;
+    const { catsRepository } = repositories;
+    this.catsRepository = catsRepository;
   }
 
   async ngOnInit(){
-    const data = await this.catsRepository.getCats();
-    console.log(data);
+    this.cats = await this.catsRepository.getCats();
+    console.log(this.cats);
   }
 
 }
