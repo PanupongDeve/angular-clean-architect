@@ -15,4 +15,8 @@ export class RepositoriesInjector {
     return this.repositories;
   }
 
+  getHelpers() {
+    
+  }
+
 }
