@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { HttpServices } from '../../HttpServices';
 export class CatsRepository {
     private http: HttpServices;
