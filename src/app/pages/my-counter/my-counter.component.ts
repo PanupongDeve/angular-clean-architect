@@ -25,8 +25,8 @@ export class MyCounterComponent implements OnInit {
     this.store.dispatch(fetchCats());
   }
 
-  increment() {
-    this.store.dispatch(increment());
+  increment(inc) {
+    this.store.dispatch(increment({ inc }));
   }
 
   decrement() {
