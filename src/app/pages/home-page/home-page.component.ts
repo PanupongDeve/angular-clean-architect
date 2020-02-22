@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RepositoriesInjector } from '../../RepositoriesInjector';
+import { RepositoriesInjector } from '../../../RepositoriesInjector';
 import { CatsRepository } from 'src/RepositoriesInjector/Repositories/CatsRepository';
 
 @Component({
