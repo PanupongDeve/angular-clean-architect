@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RepositoriesInjector } from '../../../RepositoriesInjector';
-import { CatsRepository } from 'src/RepositoriesInjector/Repositories/CatsRepository';
+import { ServiceInjector } from '../../../ServiceInjector';
+
 
 @Component({
   selector: 'app-home-page',
@@ -9,19 +9,18 @@ import { CatsRepository } from 'src/RepositoriesInjector/Repositories/CatsReposi
 })
 export class HomePageComponent implements OnInit {
   title = 'ang-clean-arc';
-  catsRepository: CatsRepository;
   cats = [];
 
   constructor(
-    private repositoriesInjector: RepositoriesInjector
+    private serviceInjector: ServiceInjector
   ) {
-    const repositories = this.repositoriesInjector.getRepositories();
-    const { catsRepository } = repositories;
-    this.catsRepository = catsRepository;
+
   }
 
   async ngOnInit(){
-    this.cats = await this.catsRepository.getCats();
+    const { repositories } = this.serviceInjector;
+    const { catsRepository } = repositories;
+    this.cats = await catsRepository.getCats();
     console.log(this.cats);
   }
 

@@ -4,8 +4,8 @@ import { StoreModule } from '@ngrx/store';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RepositoriesInjector } from '../RepositoriesInjector';
-import { combineReducers } from '../Store';
+import { ServiceInjector } from '../ServiceInjector';
+import { combineReducers } from '../vendorService/NgRxStore';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { MyCounterComponent } from './pages/my-counter/my-counter.component';
 @NgModule({
@@ -19,7 +19,7 @@ import { MyCounterComponent } from './pages/my-counter/my-counter.component';
     AppRoutingModule,
     StoreModule.forRoot(combineReducers)
   ],
-  providers: [RepositoriesInjector],
+  providers: [ServiceInjector],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

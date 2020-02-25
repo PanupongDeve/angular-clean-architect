@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { fetchCats } from './cats.actions';
-import { repositories } from '../../RepositoriesInjector/Repositories';
+import { repositories } from '../../../ServiceInjector/Repositories';
 
 export const initialState = [];
 
