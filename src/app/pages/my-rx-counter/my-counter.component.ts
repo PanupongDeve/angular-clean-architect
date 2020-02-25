@@ -14,14 +14,20 @@ export class MyRxCounterComponent implements OnInit {
 
   constructor(private serviceInjector: ServiceInjector) {
     const { rxStore } = this.serviceInjector;
-    const { counterStore } = rxStore;
+    const { counterStore, catsStore } = rxStore;
     counterStore.getCount().subscribe((count) => {
       this.count = count;
     });
+
+    catsStore.getCats().subscribe((cats) => {
+      this.cats = cats;
+    });
   }
 
-  ngOnInit() {
-   
+  async ngOnInit() {
+    const { rxStore } = this.serviceInjector;
+    const { catsStore } = rxStore;
+    await catsStore.fetchCats();
   }
 
   increment() {
