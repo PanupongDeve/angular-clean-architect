@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { increment, decrement, reset } from '../../../vendorService/NgRxStore/counter/counter.actions';
-import { fetchCats } from '../../../vendorService/NgRxStore/cats/cats.actions';
+
 
 @Component({
   selector: 'app-my-counter',
@@ -22,19 +21,19 @@ export class MyCounterComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.store.dispatch(fetchCats());
+    
   }
 
   increment(inc) {
-    this.store.dispatch(increment({ inc }));
+    
   }
 
   decrement() {
-    this.store.dispatch(decrement());
+    
   }
 
   reset() {
-    this.store.dispatch(reset());
+    
   }
 
 }

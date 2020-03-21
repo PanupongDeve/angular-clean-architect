@@ -27,7 +27,13 @@ export class MyRxCounterComponent implements OnInit {
   async ngOnInit() {
     const { rxStore } = this.serviceInjector;
     const { catsStore } = rxStore;
+    catsStore.setHandleError(this.handleError);
     await catsStore.fetchCats();
+    
+  }
+
+  handleError(error) {
+    window.alert(error);
   }
 
   increment() {

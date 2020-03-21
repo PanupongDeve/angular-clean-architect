@@ -6,9 +6,16 @@ const intitalState = [];
 export class CatsStore {
 
     private subject: BehaviorSubject<Array<any>> = new BehaviorSubject<Array<any>>(intitalState);
+    private handleError: Function;
 
     constructor() {
+        this.handleError = (error) => {
+            window.alert(error);
+        }
+    }
 
+    public setHandleError(handleError:Function) {
+        this.handleError = handleError;
     }
 
     public getCats(): BehaviorSubject<Array<any>> {
@@ -16,9 +23,13 @@ export class CatsStore {
     }
 
     public async fetchCats() {
-        const { catsRepository } = repositories;
-        const data = await catsRepository.getCats();
-        this.subject.next(data);
+        try {
+            const { catsRepository } = repositories;
+            const data = await catsRepository.getCats();
+            this.subject.next(data);
+        } catch (error) {
+            this.handleError(error);
+        }
     }
 
 
